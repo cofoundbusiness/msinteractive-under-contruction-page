@@ -1,0 +1,6 @@
+{
+  "name": "MoonShine Interactive",
+  "description": "Under construction landing page for MoonShine Interactive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

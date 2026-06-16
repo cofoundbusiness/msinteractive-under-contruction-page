@@ -1,0 +1,544 @@
+:root {
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.6);
+  --color-subtle: rgba(255, 255, 255, 0.45);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-grid: rgba(255, 255, 255, 0.05);
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Base Body Scroll Control */
+#root {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Premium Cinematic Grid & Glowing Ambient Lights */
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg);
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center center;
+  opacity: 0.65;
+}
+
+/* Moving Soft Light Gradients (Vision Pro Aura) */
+.ambient-glow-1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(80px);
+  animation: floatAmbient1 25s ease-in-out infinite alternate;
+}
+
+.ambient-glow-2 {
+  position: absolute;
+  bottom: -15%;
+  right: -5%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(242, 78, 0, 0.02) 0%, rgba(0, 0, 0, 0) 65%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  filter: blur(100px);
+  animation: floatAmbient2 20s ease-in-out infinite alternate;
+}
+
+/* Premium Main Layout Container */
+.viewport-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.header-wrapper {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 4.5rem; /* Push Under Construction down for better vertical layout balance */
+}
+
+.status-label {
+  font-family: var(--font-display);
+  font-size: 0.725rem;
+  font-weight: 400;
+  color: var(--color-fg);
+  opacity: 0.45;
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.main-title {
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 80px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.1;
+  border-color: #000000;
+  padding-left: 1px;
+  padding-top: 1px;
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+  margin-right: -0.28em; /* Offset letter-spacing on the last character for true centering */
+}
+
+/* Content Area wrapper */
+.page-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 650px;
+  margin: 1.5rem auto;
+}
+
+/* Central Vector Illustration spacing */
+.illustration-container {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5rem; /* Significant padding to separate title/illustration from details content */
+  animation: floatMotion 8s ease-in-out infinite;
+  user-select: none;
+}
+
+.premium-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Dynamic rotating vector stars / nodes inside the SVG */
+.rotator-cw {
+  transform-origin: 200px 200px;
+  animation: spinCW 28s linear infinite;
+}
+
+.rotator-ccw {
+  transform-origin: 200px 200px;
+  animation: spinCCW 20s linear infinite;
+}
+
+/* Shimmer Light Ring */
+.glow-ring {
+  transform-origin: 200px 200px;
+  stroke-dasharray: 6 300;
+  animation: ringShimmer 6s ease-in-out infinite alternate;
+}
+
+/* Text Content blocks */
+.text-section {
+  text-align: center;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.brand-header {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  color: var(--color-fg);
+}
+
+.brand-paragraph {
+  font-size: clamp(0.9rem, 2.5vw, 1.025rem);
+  font-weight: 300;
+  color: var(--color-muted);
+  line-height: 1.85;
+  letter-spacing: 0.015em;
+  margin-bottom: 1.1rem;
+}
+
+.brand-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+.partner-invitation {
+  font-family: var(--font-display);
+  font-size: 0.725rem;
+  font-weight: 300;
+  color: var(--color-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-top: 2.75rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Action Buttons: Apple iOS 26 Liquid Glass Style */
+.actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Liquid Glass Buttons */
+.liquid-glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.775rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  
+  /* Frosty Glass Blur Base */
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  /* Liquid Edge borders and shadows */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+  
+  padding: 1.15rem 2rem;
+  border-radius: 12px; /* Smooth luxury rounded profile typical of iOS glass overlays */
+  
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glass shine/accent overlay lines */
+.liquid-glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+
+/* Hover State adjustments */
+.liquid-glass-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.25),
+    0 12px 30px rgba(255, 255, 255, 0.09),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+/* Trigger liquid glass reflection animation on hover */
+.liquid-glass-btn:hover::before {
+  left: 150%;
+  transition: left 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Standard Premium Footers */
+.footer-container {
+  text-align: center;
+  margin-top: 3.5rem;
+  width: 100%;
+}
+
+.footer-copy {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+  opacity: 0.28;
+}
+
+/* Mobile and Tablet Responsive Viewport Adjustments (Below 768px) */
+@media (max-width: 767px) {
+  .viewport-container {
+    padding: 24px;
+    overflow-x: hidden;
+  }
+
+  .header-wrapper {
+    margin-top: 1.5rem;
+    margin-bottom: 0px; /* Let margin-top of illustration control the gap */
+    text-align: center;
+  }
+
+  .status-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    margin-bottom: 0.5rem;
+  }
+
+  .main-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    line-height: 0.95;
+    text-align: center;
+    letter-spacing: 0.08em; /* Reduced wide spacing on mobile to prevent overflow */
+    margin-right: -0.08em;
+    height: auto;
+    min-height: auto;
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  /* Spacing and Dimensions for the Central Construction Image */
+  .illustration-container {
+    width: 100%;
+    max-width: 170px;     /* Target range: 140px-180px */
+    margin-top: 30px !important;    /* Positioned below title with exact requested margin */
+    margin-bottom: 40px !important; /* Spacing between image and paragraphs */
+    animation: floatMotion 8s ease-in-out infinite;
+  }
+
+  /* Content section adjustments to avoid zooming and keep perfect readability */
+  .page-core {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-section {
+    padding: 0;
+    width: 100%;
+  }
+
+  .brand-header {
+    font-size: 1.35rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.85rem;
+  }
+
+  .brand-paragraph {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 12px; /* Pristine paragraph gap */
+  }
+
+  .partner-invitation {
+    margin-top: 1.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* Vertical Actions Row on Mobile (<768px) */
+  .actions-row {
+    flex-direction: column !important;
+    gap: 12px !important; /* Stack vertically with exact gap of 12px */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .liquid-glass-btn {
+    width: 100% !important; /* Full width on mobile */
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-container {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Row alignment on Desktop/Large Viewports (768px and above) */
+@media (min-width: 768px) {
+  .actions-row {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+  
+  .liquid-glass-btn {
+    width: 50%;
+  }
+}
+
+/* Extra optimization for very narrow screens (e.g., iPhone SE, <= 360px) to prevent layout break */
+@media (max-width: 360px) {
+  .viewport-container {
+    padding: 16px;
+  }
+  
+  .main-title {
+    font-size: 2.15rem; /* Fail-safe title scaling */
+    letter-spacing: 0.05em;
+    margin-right: -0.05em;
+  }
+
+  .illustration-container {
+    max-width: 145px; /* Perfect safe lower bound */
+    margin-top: 24px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .brand-header {
+    font-size: 1.2rem;
+  }
+
+  .brand-paragraph {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+}
+
+/* Screen height adjusted overrides for very small screens or landscape mobile to prevent scrolling */
+@media (max-height: 720px) {
+  .viewport-container {
+    padding: 1.5rem 1rem;
+  }
+  .header-wrapper {
+    margin-top: 1rem;
+  }
+  .illustration-container {
+    margin-top: 20px !important;
+    margin-bottom: 25px !important;
+    max-width: 140px;
+  }
+  .partner-invitation {
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes floatMotion {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.2deg);
+  }
+}
+
+@keyframes spinCW {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinCCW {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ringShimmer {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 360;
+    opacity: 0.95;
+  }
+}
+
+@keyframes floatAmbient1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(80px, 40px) scale(1.15);
+  }
+}
+
+@keyframes floatAmbient2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-60px, -30px) scale(1.1);
+  }
+}
